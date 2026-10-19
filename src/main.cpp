@@ -81,7 +81,7 @@ void IRAM_ATTR onTimer() {
 void IRAM_ATTR onTick() { tickCounter++; }
 
 void IRAM_ATTR onChangeModeWithDebounce() {
-    unsigned long now = micros();
+    unsigned long now = millis();
 
     if (now - button_prev_time < DEBOUNCE_MS) return;
     isModeChanged = true;
@@ -183,7 +183,7 @@ void loop() {
     if (current_millis - previous_millis >= INTERVAL_MS) {
         previous_millis = current_millis;
 
-        Serial.println("current mode:" + String(isSpecialMode ? "special" : "normal"));
-        Serial.println("current counter:" + String(counter));
+        Serial.println("[current mode:" + String(isSpecialMode ? "special" : "normal") + "]");
+        Serial.println("[current counter:" + String(counter) + "]");
     }
 }
